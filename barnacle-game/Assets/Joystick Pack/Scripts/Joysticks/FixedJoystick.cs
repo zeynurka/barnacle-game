@@ -1,30 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class FixedJoystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class FixedJoystick : MonoBehaviour
 {
-    [HideInInspector]
-    public bool Pressed;
+    Joystick joystick;
 
-    // Use this for initialization
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        //float xAxis = joystick.Horizontal;
+        //float yAxis = joystick.Vertical;
+        //Vector3 direction = new Vector3(xAxis, 0f, yAxis).normalized;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Pressed = true;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Pressed = false;
-    }
 }

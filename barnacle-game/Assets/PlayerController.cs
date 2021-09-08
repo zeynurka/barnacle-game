@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
 
     Animator animator;
+    Joystick joystick;
 
     void Start()
     {
@@ -14,26 +17,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //çalışıp çalışmadığını kontrol etmek için
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            animator.SetTrigger("Falling");
-        }
+        animator.SetBool("walking", true);
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        bool fire = Input.GetButtonDown("Fire1");
+        float xAxis = joystick.Horizontal;
+        float yAxis = joystick.Vertical;
+        Vector3 direction = new Vector3(xAxis, 0f, yAxis).normalized;
 
-        animator.SetFloat("Forward", v);
-        animator.SetFloat("Strafe", h);
-        animator.SetBool("Fire", fire);
     }
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.tag == "Enemy")
         {
-            animator.SetTrigger("Falling");
+            animator.SetBool("falling", true);
+        }
+        else
+        {
+            animator.SetBool("falling", false);
         }
     }
+
+
 }
