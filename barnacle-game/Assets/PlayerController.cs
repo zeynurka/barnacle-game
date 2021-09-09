@@ -12,16 +12,18 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        animator.SetBool("walking", true);
 
-        float xAxis = joystick.Horizontal;
-        float yAxis = joystick.Vertical;
-        Vector3 direction = new Vector3(xAxis, 0f, yAxis).normalized;
+        //float xAxis = joystick.Horizontal;
+        //float yAxis = joystick.Vertical;
+        //Vector3 direction = new Vector3(xAxis, 0f, yAxis).normalized;
+
+        transform.Rotate(new Vector3(joystick.Vertical, 0, joystick.Horizontal));
 
     }
 
@@ -36,6 +38,5 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("falling", false);
         }
     }
-
 
 }
