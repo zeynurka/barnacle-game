@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     Animator animator;
-    Joystick joystick;
+    Joystick joystick; 
 
     void Start()
     {
