@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -999,6 +999,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 608565c2e593add4ab0a9a247e10ebba, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 1137b3d0dfdc1d14baad13233fb0370a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6016762715603336492, guid: 1137b3d0dfdc1d14baad13233fb0370a, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -1168,7 +1172,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1763770056}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.25
   m_Height: 2.5
   m_Direction: 1
@@ -1182,7 +1186,7 @@ CharacterController:
   m_GameObject: {fileID: 1763770056}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
