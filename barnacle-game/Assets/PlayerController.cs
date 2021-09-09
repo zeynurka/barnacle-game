@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
         float xAxis = joystick.Horizontal;//joystick x ekseninde ne kadar hareket ediyor (tam hatırlamıyorum -1 1 arası değer dönüyordu sanırım)
         float yAxis = joystick.Vertical;//joystick y ekseninde ne kadar hareket ediyor
         Vector3 direction = new Vector3(xAxis, 0f, yAxis).normalized;//Bu joystick hareketini bir doğru olarak alıp onu bilinen fizikte bir vektörün normalini almayı otomatik yapan .normalized işlemine tutuyoruz.
-        //Debug.Log(direction);
 
         charController.SimpleMove(direction.normalized * 5f); //bu metot ise içine yazdığı vector doğrultusunda hareket ettirmesi gerekiyor. Normal vektör yaptığımızda yanındaki 10 carpanı karakterin hızını gösteriyor. Bunu public bir değişkene atayıp inspectorden değiştirmek daha saglıklı o hale getirip uygun bir hız belirlemen gerekir animasyona göre
         //float speed;
