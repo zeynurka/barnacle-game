@@ -39,17 +39,27 @@ public class PlayerController : MonoBehaviour
         {
             angle = -90;
             angle += 90 * joystick.Vertical;
-        }
+        }  
 
         Vector3 v = new Vector3(0, angle, 0);
         transform.localRotation = Quaternion.Euler(v);
+
+        //burada falling - dying geçişini nasıl kontrol edebilirim? 
+        //if ()
+        //{
+        //    animator.SetBool("dying",true);
+        //}
+
 
         //transform.Rotate(new Vector3(joystick.Vertical, 0, joystick.Horizontal)); dediğim gibi bu bi tık düzeltirsek calısır ama sıkıntı cıkar bir npc (bu oyunlardaki vatandas yapay zeka, hyper casual dan örneklerde önümüzde sag sol yapan bir karakter olsaydı belki root motion kullanılabilirdi) için kullanabilirsin belki
 
         //transform.Rotate(0, yAxis, 0);
 
+
+
     }
 
+    //çarpışma kontrolü burada yazdığım gibi çalışmıyor koşula uymadan direkt fallinge geçiyor
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
