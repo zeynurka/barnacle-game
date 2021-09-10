@@ -45,20 +45,48 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(v);
 
 
-        //transform.Rotate(new Vector3(joystick.Vertical, 0, joystick.Horizontal)); dediğim gibi bu bi tık düzeltirsek calısır ama sıkıntı cıkar bir npc (bu oyunlardaki vatandas yapay zeka, hyper casual dan örneklerde önümüzde sag sol yapan bir karakter olsaydı belki root motion kullanılabilirdi) için kullanabilirsin belki
+    //transform.Rotate(new Vector3(joystick.Vertical, 0, joystick.Horizontal)); dediğim gibi bu bi tık düzeltirsek calısır ama sıkıntı cıkar bir npc (bu oyunlardaki vatandas yapay zeka, hyper casual dan örneklerde önümüzde sag sol yapan bir karakter olsaydı belki root motion kullanılabilirdi) için kullanabilirsin belki
 
-        //transform.Rotate(0, yAxis, 0);
+    //transform.Rotate(0, yAxis, 0);
 
 
-        //burada falling - dying geçişini nasıl kontrol edebilirim? 
+    //burada falling - dying geçişini nasıl kontrol edebilirim? !!: Belirli bir süre gectikten sonra hala falling ise bunu true yapabilirsin
+    /*
+    keys:
+        StartCoroutine();
+        IEnumerator metotadi(istersenparametre)
+        {
+            //blabla
+            yield return WaitForSeconds(süre);
+        }
+    bunlar ile belirli bir sürenin gectigini kontrol edebiliyorsun
+    */
+
+
         //if ()
         //{
         //    animator.SetBool("dying",true);
         //}
 
     }
-
-    //çarpışma kontrolü burada yazdığım gibi çalışmıyor koşula uymadan direkt fallinge geçiyor
+   
+    /// <summary>
+    /// Character controller varsa onun colliderinin carpısmasını tetiklemek için bu metot kullanılıyor. istersen bunu karıstırmayın collider ekle kafan karısmasın. sorun cıkarsa bu metota geri gecersin cok bir farkı yok.
+    /// </summary>
+    /// <param name="hit"></param>
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log(hit.gameObject.name);
+        if (hit.gameObject.tag == "Enemy")
+        {
+            animator.SetBool("falling", true);
+        }
+        else
+        {
+            animator.SetBool("falling", false);
+        }
+    }
+    //çarpışma kontrolü burada yazdığım gibi çalışmıyor(cevabı yukarda) koşula uymadan direkt fallinge geçiyor /// burası için ekstra sildigin capsule collideri tekrar eklersen calısır.
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Enemy")
